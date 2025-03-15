@@ -1,18 +1,10 @@
 // stp utilise les arrow fonction pour toutes les foncions 
 //exercise 01
-
-function guessNumber(numb)
-    {
-        let varAleatoire = Math.floor(Math.random()*10)+1;
+let varAleatoire = Math.floor(Math.random()*10)+1;
         console.log(varAleatoire);
-        if (numb===varAleatoire)
-        {
-            return "Good work"
-        } 
-        else
-        {return "Not matched"} 
-
-    }
+  
+const guessNumber= (numb) =>(numb ===varAleatoire)? "good luck" : "Not Matched";
+   
 console.log(guessNumber(4))
 //valide
 
@@ -30,22 +22,10 @@ console.log(guessNumber(4))
     console.log("days left until next chrismas are:" + result ) ;
 
   // exercuice 03
-    function multiplication(x,y)
-        {
-            console.log("your result are:"+ (x*y)); 
-            return;
-        }
+    const multiplication = (x,y) =>`your result are :${Math.ceil(x*y)}`;
         multiplication(1,10)
-    function division (x,y)
-    {
-        if (y === 0)
-        { 
-            console.log("impossible to do a division because your second number equal to 0")
-            return
-        }
-        console.log ( "your result are:" + (x/y));
-        return
-    }
+    const division = (x,y) => (y ===0) ?"impossible de faire la division" :`votre resultat est: ${Math.ceil(x / y)}`;
+    
     division (0,2)
 //valide mais tu peux mieux faire 
 
@@ -55,7 +35,7 @@ console.log(guessNumber(4))
 
     
    //exercice 04
-     function longest_array ( tab)
+     const longest_array = ( tab) =>
        {
          let max_ch =tab[0].length ;
          let stock = tab[0];
@@ -75,7 +55,7 @@ console.log(guessNumber(4))
 //valide
      
        //exercise 5
-        function largest_even (tab)
+        const largest_even = (tab) =>
           {
             let max_even = null ;
             for (let i=0; i <tab.length; i++)
@@ -94,7 +74,7 @@ console.log(guessNumber(4))
 
     // exercice6
     
-    function supprime_doublons (chaine)
+    const supprime_doublons =(chaine) =>
     {
         let stock="";
         for (let i=0; i<chaine.length; i++)
@@ -106,13 +86,14 @@ console.log(guessNumber(4))
            
         }
         //why ?
+        //je retourne hors de la bourcle pour laissé la bourcle allé jusqu'a la fin et tester tout les caracteres
         return ("votre chaine la plus nlongue est :" +stock)
     }
     console.log(supprime_doublons("hellooo"));
       
      //exercice7
      //valide
-       function sum_of_cube( num)
+       const sum_of_cube =( num) =>
         {
             let sum= null ;
             for (let i=0; i<num; i++)
@@ -125,6 +106,7 @@ console.log(guessNumber(4))
 
     // exerci8
      //valide, qu'es ce qui t'a posser a utiliser every ?
+     //pour parcourir chaque cles et s'assure que toutes respectent la condition donnée
     const matchesWith = (obj, source, fn) => {
       return Object.keys(source).every(key => {
           if (!obj.hasOwnProperty(key)) {
@@ -146,9 +128,10 @@ console.log(guessNumber(4))
 
     //exercice9
 //le but de l'exercice c'est quoi ? 
+// elle permet de supprimé les elements d'un tableau a un endroit specifiques et retournes le tableau sans les nombres supprimés
     function remove (arr, ...args)
       {
-        let argState =Array.isArray(args[0]) ? args[0] :args;// erifi si le 1e element est un tbleau ou non
+        let argState =Array.isArray(args[0]) ? args[0] :args;// verifi si le 1e element est un tbleau ou non
         let pulled = arr.filter((v, i) => !argState.includes(v));// filtre les element qui ne sont pas dans argstate
         arr.length=0;//vider le tableau original
         pulled.forEach(v => arr.push(v)); // Remplir arr avec les element restants de pulled
@@ -160,7 +143,7 @@ console.log(guessNumber(4))
 
       //exercice 10
 //le nom de ta fonction doit etre explicite (confee regle de clean code ) 
-      const pull_at_Index = (tab, indice) => {
+      const remove_and_index = (tab, indice) => {
         let removed = [];
         let pulled = tab
           .map((v, i) => (indice.includes(i) ? removed.push(v) : v))
@@ -185,64 +168,54 @@ console.log(guessNumber(4))
       
       //exercice12
        
-      function calcule_volume_of_cylindre (r,h)
-         {
-          let volume = Math.ceil(2*(Math.PI*Math.pow(r,2)*h)) ;
-          return ( "your volume are:"+volume )
-         }
+      const calcule_volume_of_cylindre =(r,h) =>
+      ` your volume are:${Math.ceil(2*(Math.PI*Math.pow(r,2)*h))} `
+         
          console.log(calcule_volume_of_cylindre(2,4))
 
   //exercice 13
 //pas la bonne aproche 
-      let today= new Date();
-
-      let heure = today.getHours();
-      let minute = today.getMinutes() ;
-      let seconde = today.getSeconds() ;
-  function  Clock ()
+//nouelle methode avec les classes
+function  my_Clock () 
+    { 
+       this.today= new Date();
+       this.heure = today.getHours();
+      this.minute = today.getMinutes() ;
+      this.seconde = today.getSeconds() ;
+    }
+    my_Clock.prototype.run =() =>setInterval(this.ontimeupdate.bind(this),1000);
+    my_Clock.prototype.update = function (){
+      this.updateTime(1)
+      console.log(this.hours + ":" + this.minutes + ":" + this.seconds);
+    }
+    my_Clock.prototype.updateTime = function (secs)
     {
-      if (seconde >=60)
+      if (this.seconde >=60)
       {
-        minute ++ ;
-        seconde =0 ;
+        this.minute ++ ;
+        this.seconde =0 ;
       }
-        if (minute >=60)
+        if (this.minute >=60)
         {
-          heure ++ ;
-          minute = 0 ;
+         this.heure ++ ;
+          this.minute = 0 ;
         }
-          if (heure >=24)
+          if (this.heure >=24)
           {
-            heure = 0;
+            this.heure = 0;
           }
-          console.log(`${heure}:${minute}:${seconde}`);
-
-    } 
-    setInterval(clock(),1000)
-  
+    } ;
+let clock = new my_Clock();
+clock.run();  
   //exercice 14
 //valide 
-  function inLowerCase ( chaine)
-    {
-      if (chaine===chaine.toLowerCase())
-        {
-          return(" your string in lower case ");
-        }
-     else 
-     {
-      return ("your string is not a lower case");
-     }
-    }
+  const inLowerCase = ( chaine) =>(chaine===chaine.toLowerCase())?" your string in lower case ":"your string is not a lower case";
     console.log(inLowerCase("junior")) ;
 
     //exercice 15
 
 //utilise une autre aproche 
 
-    function add (x,y)
-      {
-        if (x ===undefined || y===undefined)
-          return ("Must provide two parameters")
-      }
+    const add = (x,y) =>(x===0 && y===0)?"Must provide two parameters" :"you have two parameter";
       console.log(add());
       

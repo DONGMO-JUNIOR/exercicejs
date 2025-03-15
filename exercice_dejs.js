@@ -1,4 +1,4 @@
-
+// stp utilise les arrow fonction pour toutes les foncions 
 //exercise 01
 
 function guessNumber(numb)
@@ -14,6 +14,7 @@ function guessNumber(numb)
 
     }
 console.log(guessNumber(4))
+//valide
 
 //exrcise 02
    
@@ -32,7 +33,7 @@ console.log(guessNumber(4))
     function multiplication(x,y)
         {
             console.log("your result are:"+ (x*y)); 
-            return
+            return;
         }
         multiplication(1,10)
     function division (x,y)
@@ -46,6 +47,12 @@ console.log(guessNumber(4))
         return
     }
     division (0,2)
+//valide mais tu peux mieux faire 
+
+//exple: 
+// const division = (x, y) => 
+//   y === 0 ? "Impossible to do a division because your second number is 0" : `Your result is: ${x / y}`;
+
     
    //exercice 04
      function longest_array ( tab)
@@ -64,6 +71,8 @@ console.log(guessNumber(4))
          
        }
        console.log(longest_array(["a","add","ddfs"]));
+
+//valide
      
        //exercise 5
         function largest_even (tab)
@@ -96,12 +105,13 @@ console.log(guessNumber(4))
             }
            
         }
+        //why ?
         return ("votre chaine la plus nlongue est :" +stock)
     }
     console.log(supprime_doublons("hellooo"));
       
      //exercice7
-     
+     //valide
        function sum_of_cube( num)
         {
             let sum= null ;
@@ -114,7 +124,7 @@ console.log(guessNumber(4))
         console.log(sum_of_cube(3));
 
     // exerci8
-     
+     //valide, qu'es ce qui t'a posser a utiliser every ?
     const matchesWith = (obj, source, fn) => {
       return Object.keys(source).every(key => {
           if (!obj.hasOwnProperty(key)) {
@@ -135,7 +145,7 @@ console.log(guessNumber(4))
     ));
 
     //exercice9
-
+//le but de l'exercice c'est quoi ? 
     function remove (arr, ...args)
       {
         let argState =Array.isArray(args[0]) ? args[0] :args;// erifi si le 1e element est un tbleau ou non
@@ -149,7 +159,7 @@ console.log(guessNumber(4))
       console.log(remove(arr,'a','b')) ;
 
       //exercice 10
-
+//le nom de ta fonction doit etre explicite (confee regle de clean code ) 
       const pull_at_Index = (tab, indice) => {
         let removed = [];
         let pulled = tab
@@ -183,6 +193,7 @@ console.log(guessNumber(4))
          console.log(calcule_volume_of_cylindre(2,4))
 
   //exercice 13
+//pas la bonne aproche 
       let today= new Date();
 
       let heure = today.getHours();
@@ -210,7 +221,7 @@ console.log(guessNumber(4))
     setInterval(clock(),1000)
   
   //exercice 14
-
+//valide 
   function inLowerCase ( chaine)
     {
       if (chaine===chaine.toLowerCase())
@@ -225,6 +236,8 @@ console.log(guessNumber(4))
     console.log(inLowerCase("junior")) ;
 
     //exercice 15
+
+//utilise une autre aproche 
 
     function add (x,y)
       {

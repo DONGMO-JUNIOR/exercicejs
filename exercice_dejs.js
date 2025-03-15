@@ -183,7 +183,7 @@ function  my_Clock ()
       this.minute = today.getMinutes() ;
       this.seconde = today.getSeconds() ;
     }
-    my_Clock.prototype.run =() =>setInterval(this.ontimeupdate.bind(this),1000);
+    my_Clock.prototype.run =() =>setInterval(this.update.bind(this),1000);
     my_Clock.prototype.update = function (){
       this.updateTime(1)
       console.log(this.hours + ":" + this.minutes + ":" + this.seconds);
